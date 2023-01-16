@@ -2,7 +2,7 @@ import React from "react";
 import Icon from "@material-ui/core/Icon";
 import Textarea from "react-textarea-autosize";
 import Card from "@material-ui/core/Card"
-import { Button } from "@material-ui/core";
+import { Button, CardContent } from "@material-ui/core";
 import { connect } from "react-redux";
 import { addList, addCard } from "../actions";
 
@@ -55,18 +55,18 @@ class ActionButton extends React.Component {
             dispatch(addCard(listId,text));
         }
     };
-    
+
     renderAddButton = () => {
         const { list } = this.props;
         const buttonText = list ? "Add another list" : "Add another card";
         const buttonTextOpacity = list ? 1: 0.5;
-        const buttonTextColor = list ? "white" : "inherit";
-        const buttonTextBackground = list ? "rgba(0,0,0,.15)" : "inherit"
+        const buttonTextColor = list ? "#686868" : "inherit";
+        const buttonTextBackground = list ? "#d8ecf3" : "inherit"
         return (
             <div 
             onClick={this.openForm}
             style= {{
-                ...styles.openForButtonGroup,
+                ...styles.openFormButtonGroup,
                 opacity:buttonTextOpacity, 
                 color: buttonTextColor, 
                 backgroundColor: buttonTextBackground
@@ -77,7 +77,7 @@ class ActionButton extends React.Component {
             </div>
         );
     };
-
+//
     renderForm = () => {
         const { list } = this.props;
         const placeholder = list 
@@ -90,10 +90,10 @@ class ActionButton extends React.Component {
                 overflow:"visible",
                 minHeight: 80,
                 minWidth: 272,
-                padding: "6px 8px 2px"
+                padding: "8px 8px 8px"
             }}
             >
-                <Textarea
+                <input
                     placeholder={placeholder}
                     autoFocus
                     onBlur={this.closeForm}
@@ -110,13 +110,13 @@ class ActionButton extends React.Component {
             </Card>
             <div style={styles.formButtonGroup}>
                 <Button 
-                onMouseDown={list ? this.handleAddList : this.handleAddCard}
-                variant="contained" 
-                style={{color: "white", backgroundColor: "blue"}}
+                    onMouseDown={list ? this.handleAddList : this.handleAddCard}
+                    variant="contained" 
+                    style={{color: "white", backgroundColor: "blue"}}
                 >
-                    { buttonTitle } { " " }
+                    {buttonTitle} {" "}
                 </Button>
-                <Icon style={{ marginLeft: 8, cursor: "pointer"}}>X</Icon>
+                <Icon style={{ marginLeft: 8, cursor: "pointer"}}>close</Icon>
             </div>
         </div>
         )
@@ -135,12 +135,14 @@ const styles = {
         borderRadius: 3, 
         height: 36,
         width: 272,
-        paddingLeft: 10,
+        padding: 10,
+       
 
     }, formButtonGroup: {
         marginTop: 0,
         display: "flex",
-        alignItens: "center"
+        alignItens: "center",
+        padding:10,
     }
 };
 

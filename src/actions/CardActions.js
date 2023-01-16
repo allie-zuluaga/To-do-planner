@@ -7,3 +7,17 @@ export const addCard = (listId, text) => {
     };
 };
 
+export const removeCard = (id, cardId) => {
+ 
+
+    return {
+        type: CONSTANTS.REMOVE_CARD,
+        payload: {cardId, id}
+
+       // payload: { id  },
+    };
+};
+
+
+
+

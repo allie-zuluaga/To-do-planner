@@ -8,12 +8,22 @@ export const addList = title => {
     };
 };
 
+// export const removeCard = (id, listId,droppableIndexStart, droppableIdStart ) => {
+//     return {
+//         type: CONSTANTS.REMOVE_CARD,
+//         payload: {id, listId, droppableIndexStart, droppableIdStart }
+
+//        // payload: { id  },
+//     };
+// };
+
 export const sort = (
     droppableIdStart,
     droppableIdEnd,
     droppableIndexStart,
     droppableIndexEnd,
-    droppabledId
+    draggableId,
+    type
 )  => {
     return {
         type: CONSTANTS.DRAG_HAPPENED,
@@ -22,7 +32,8 @@ export const sort = (
             droppableIdEnd,
             droppableIndexStart,
             droppableIndexEnd,
-            droppabledId
+            draggableId,
+            type
         }
     };
 
